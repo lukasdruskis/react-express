@@ -10,7 +10,8 @@ export default class Test extends Component {
   }
 
   handleClick = async () => {
-    const data = await axios.get('/test')
+    this.setState({message: 'Kraunama...'})
+    const data = await axios.get('/test')    
     const message = await data.data.data[0].message
     this.setState({message: message})
   }
