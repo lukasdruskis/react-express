@@ -1,1 +1,1 @@
-export const GET_MESSAGE = 'GET_MESSAGE'
+export const SUCCESSFULL_FETCH = 'SUCCESSFULL_FETCH'

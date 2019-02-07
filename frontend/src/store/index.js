@@ -2,14 +2,16 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import rootReducer from '../reducers'
 
-const initialState = {}
 
-const store = createStore(
+
+function appStore(initialState = {}) {
+  return createStore(
     rootReducer,
     initialState,
     applyMiddleware(
       thunkMiddleware
     )
-)
+  )
+}
 
-export default store
+export default appStore

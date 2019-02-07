@@ -1,26 +1,26 @@
-import { GET_MESSAGE } from '../constants'
+import { SUCCESSFULL_FETCH } from '../constants'
 
 
 const initialState = {
-  messages: []
+    messages: []
 }
 
-export function messageReducer(state = initialState, action)
-{
-  switch(action.type) {
+export function messageReducer(state = initialState, action) {
+    switch (action.type) {
 
-      case GET_MESSAGE: {
-          return {
-              ...state,              
-              messages: action.message
-          }
-      }
+    case SUCCESSFULL_FETCH:
+    {
+        return {
+            ...state,
+            messages: action.message
+            }
+    }
 
-      default: 
-          return {
-              ...state
-          }
-  }
+    default:
+        return {
+        ...state
+        }
+    }
 }
 
 export default messageReducer

@@ -1,17 +1,22 @@
-import { GET_MESSAGE } from '../constants'
+import { SUCCESSFULL_FETCH } from '../constants'
 import axios from 'axios'
 
-// const data = await axios.get('/test')    
-// const message = await data.data.data[0].message
+function successfullFetch(message) {
+  return {
+    type: SUCCESSFULL_FETCH,
+    message
+  }
+}
 
-export function getMessage() {
+export function fetchMessage() {
   return async dispatch => {
-    const data = await axios.get('/test')
-    const message = await data.data.data[0].message
-    
-    dispatch({
-      type: GET_MESSAGE,
-      message
-    })
+    try {
+      const data = await axios.get('/test')
+      const message =  data.data.message
+      
+      dispatch(successfullFetch(message))
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

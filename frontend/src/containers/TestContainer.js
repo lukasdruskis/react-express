@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import TestComponent from '../components/TestComponent'
-import {getMessage} from '../actions/messageActions'
+import {fetchMessage} from '../actions/messageActions'
 
 const mapStateToProps = ({message}) => {
     return {
@@ -10,8 +10,8 @@ const mapStateToProps = ({message}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickHandle: () => {          
-          dispatch(getMessage())
+        onClickHandle: () => {     
+          dispatch(fetchMessage())
         }
     }
 }

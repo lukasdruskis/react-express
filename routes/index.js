@@ -27,9 +27,9 @@ router.get('/test', async (req, res) => {
     useNewUrlParser: true
   })
   const db = client.db("database")
-  const data = await db.collection("messages").find({}).toArray()
+  const data = await db.collection("messages").findOne({})
 
-  res.json({data});
+  res.json(data);
 
 })
 
