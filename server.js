@@ -18,7 +18,7 @@ app.use('/', routes)
 app.use('/test', test);
 
 app.get('/backend', (req, res) => {
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+    res.send({ express: 'Backend connection sueccessful' });
   });
 
 const port = process.env.PORT || 5000
