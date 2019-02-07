@@ -21,4 +21,16 @@ router.get('/', async (req, res) => {
 
 })
 
+router.get('/test', async (req, res) => {
+
+  const client = await MongoClient.connect(mongoUrl, {
+    useNewUrlParser: true
+  })
+  const db = client.db("database")
+  const data = await db.collection("messages").find({}).toArray()
+
+  res.json({data});
+
+})
+
 module.exports = router
