@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
     db.collection("messages").findOne({}, (err, result) => {
       if (err) throw err
       
-      res.render('index', {title: 'TINKLAPIS', message: result.message})
+      res.render('index', {title: 'Dainius', message: result.message})
     })
   })
 
