@@ -16,6 +16,10 @@ app.set('view engine', 'hbs')
 
 app.use('/', routes)
 
+app.get('/backend', (req, res) => {
+    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+  });
+
 const port = process.env.PORT || 5000
 
 app.listen(port, () => console.log(`Server started on ${port}`))
