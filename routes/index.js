@@ -4,18 +4,19 @@ const MongoClient = require('mongodb').MongoClient
 
 const mongoUrl = 'mongodb://localhost:27017/'
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res) => {
 
-  MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, client) => {
-    if (err) throw err
-  
-    const db = client.db("database")
-  
-    db.collection("messages").findOne({}, (err, result) => {
-      if (err) throw err
-      
-      res.render('index', {title: 'Dainius', message: result.message})
-    })
+  const client = await MongoClient.connect(mongoUrl, {
+    useNewUrlParser: true
+  })
+  const db = client.db("database")
+  const data = await db.collection("messages").find({}).toArray()
+
+  const result = data[0].message
+
+  res.render('index', {
+    title: 'TINKLAPIS',
+    message: result
   })
 
 })
