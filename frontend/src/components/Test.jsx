@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { log } from 'handlebars';
 
 export default class Test extends Component {
   constructor(props) {
