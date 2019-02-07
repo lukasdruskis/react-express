@@ -1,20 +1,29 @@
-import { SUCCESSFULL_FETCH } from '../constants'
+import { SUCCESSFUL_FETCH, FETCHING_MESSAGE } from '../constants'
 import axios from 'axios'
 
-function successfullFetch(message) {
+function successfulFetch(message) {
   return {
-    type: SUCCESSFULL_FETCH,
-    message
+    type: SUCCESSFUL_FETCH,
+    message,
+    isFetching: false
+  }
+}
+
+function fetchingMessage() {
+  return {
+    type: FETCHING_MESSAGE,
+    isFetching: true
   }
 }
 
 export function fetchMessage() {
   return async dispatch => {
+    dispatch(fetchingMessage())
     try {
       const data = await axios.get('/test')
       const message =  data.data.message
       
-      dispatch(successfullFetch(message))
+      dispatch(successfulFetch(message))
     } catch (e) {
       console.log(e);
     }
