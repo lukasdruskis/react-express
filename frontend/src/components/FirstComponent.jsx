@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
-function FirstComponent (){
- return <h1>First Component</h1>
-}
-
-export default FirstComponent;
+class FirstComponent extends Component {
+    
+    render() {
+        return (
+          <div>
+            <h2>Čia nieko nėra, eikit į kitą puslapį</h2>
+            </div>
+        )
+      }
+    }
+  export default FirstComponent;
