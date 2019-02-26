@@ -7,31 +7,28 @@ class FilterComponent extends Component {
   }
 
   componentDidMount() {
-    const {getModelFilter} = this.props
+    const {getModelFilter, getFilteredAdverts} = this.props
     getModelFilter()
+    getFilteredAdverts()
   }
 
   render() {
-    const {filter, onChosenModel} = this.props
+    const {filter, onChosenModel, getFilteredAdverts} = this.props
     return (
       <div>
         <h1>Pasirinkite norimus kriterijus</h1>
-        <select style={{width : "150px", height : "25px"}}onChange={ e => onChosenModel(e)}>
+        <select name="model" onChange={ e => onChosenModel(e)}>
           <option value="" selected disabled>Pasirinkite modelį</option> 
+
           {filter && filter.map((item, index) => 
-          <option value= {item.modelID} key={index}>{item.model}</option>) }        
+          <option defaultValue = "Pasirinkite Modeli" value= {item.modelID} key={index}>{item.model}</option>) }        
        </select>
 
-       <select style={{width : "150px", height : "25px"}}>
-          <option>Pasirinkite spalvą</option>  
-       </select>
+        <div>
+        Paieškos rezultatas:
+      {getFilteredAdverts()}
+        </div>
 
-       <select style={{width : "150px", height : "25px"}}>
-          <option>Pasirinkite kuro tipą</option>         
-       </select>
-       <select style={{width : "150px", height : "25px"}}>
-          <option>Pasirinkite metus</option>         
-       </select>
       </div>
     );
   }

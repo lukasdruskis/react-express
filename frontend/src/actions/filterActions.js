@@ -1,35 +1,59 @@
 import {
-    
-    GET_FILTERS
+    GET_MODELS,
+    GET_ADVERTS
 } 
 from '../constants'
 import fetch from 'isomorphic-fetch'
 
 
-function filtersFetch(fetchedFilters) {
+function modelsFetch(fetchedModels) {
     return {
-        fetchedFilters,
-        type: GET_FILTERS
+        fetchedModels,
+        type: GET_MODELS
+    }
+}
+
+function advertsFetch() {
+    return {
+        type: GET_ADVERTS
     }
 }
 
 //uzkrovus tinklapi
-export function fetchFilters(chosenModel)
+export function fetchModels(chosenModel)
 {
     return async dispatch => {
 
         try {
-            const respond = await fetch(`/filters?chosenModel=${chosenModel}`, {
+            const respond = await fetch(`/filters/models?chosenModel=${chosenModel}`, {
                 headers: {
                     "X-Requested-With": "XMLHttpRequest"
                 },
                 method: 'get'
             })
-            const fetchedFilters = await respond.json()
-            dispatch(filtersFetch(fetchedFilters))
+            const fetchedModels = await respond.json()
+            dispatch(modelsFetch(fetchedModels))
         } catch(e) {
         }
     }
 }
 
-export default fetchFilters
+export function fetchAdverts()
+{
+    return async dispatch => {
+
+        try {
+            const respond = await fetch(`/filters/adverts`, {
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                method: 'get'
+            })
+            const fetchedAdverts = await respond.json()
+            dispatch(advertsFetch(fetchedAdverts))
+        } catch(e) {
+        }
+    }
+}
+
+export default fetchModels

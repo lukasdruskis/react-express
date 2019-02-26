@@ -1,9 +1,12 @@
-import { GET_FILTERS } from '../constants'
+import { GET_MODELS, GET_ADVERTS } from '../constants'
 
 const initialState = {
     result: {
-        fetchedFilters: [
+        fetchedModels: [
 
+        ],
+        fetchedAdverts: [
+            
         ]
     }
 }
@@ -11,11 +14,19 @@ const initialState = {
 export function filterReducer(state = initialState, action) {
     switch (action.type) {
 
-            case GET_FILTERS:
+            case GET_MODELS:
             {
                 return {
                     ...state,
-                    fetchedFilters: action.fetchedFilters
+                    fetchedModels: action.fetchedModels
+                }
+            }
+
+            case GET_ADVERTS:
+            {
+                return {
+                    ...state,
+                    fetchedAdverts: action.fetchedAdverts
                 }
             }
 
