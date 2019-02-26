@@ -1,0 +1,8 @@
+export const RATE_PAGE = 'RATE_PAGE'
+export const RATE_SUCCESS = 'RATE_SUCCESS'
+export const RATE_FAILURE = 'RATE_FAILURE'
+export const GET_RESULT = 'GET_RESULT'
+export const DATA_FETCH = 'DATA_FETCH'
+export const FILTERING_SUCCESS = 'FILTERING_SUECESS'
+export const FILTERING_FAILURE = 'FILTERING_FAILURE'
+export const GET_FILTERS = 'GET_FILTERS'
