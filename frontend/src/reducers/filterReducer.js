@@ -12,6 +12,7 @@ const initialState = {
 }
 
 export function filterReducer(state = initialState, action) {
+    
     switch (action.type) {
 
             case GET_MODELS:

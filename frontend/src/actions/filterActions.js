@@ -13,8 +13,9 @@ function modelsFetch(fetchedModels) {
     }
 }
 
-function advertsFetch() {
+function advertsFetch(fetchedAdverts) {
     return {
+        fetchedAdverts,
         type: GET_ADVERTS
     }
 }
@@ -38,12 +39,12 @@ export function fetchModels(chosenModel)
     }
 }
 
-export function fetchAdverts()
+export function fetchAdverts(chosenModel)
 {
     return async dispatch => {
 
         try {
-            const respond = await fetch(`/filters/adverts`, {
+            const respond = await fetch(`/filters/adverts?chosenModel=${chosenModel}`, {
                 headers: {
                     "X-Requested-With": "XMLHttpRequest"
                 },
@@ -51,6 +52,7 @@ export function fetchAdverts()
             })
             const fetchedAdverts = await respond.json()
             dispatch(advertsFetch(fetchedAdverts))
+            console.log(fetchedAdverts)
         } catch(e) {
         }
     }

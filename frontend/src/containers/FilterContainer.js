@@ -5,6 +5,7 @@ import { fetchModels, fetchAdverts } from '../actions/filterActions'
 const mapStateToProps = ({filter}) => {
     return {
         filter: filter.fetchedModels,
+        fetchedAdverts: filter.fetchedAdverts
     }
 }
 
@@ -18,8 +19,9 @@ const mapDispatchToProps = (dispatch) => {
             const chosenModel = e.target.value
             dispatch(fetchModels(chosenModel))
             },
-        getFilteredAdverts: () => {
-            dispatch(fetchAdverts())
+        getFilteredAdverts: (e) => {
+            const chosenModel = e.target.value
+            dispatch(fetchAdverts(chosenModel))
         }
     }
     
