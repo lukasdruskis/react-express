@@ -22,18 +22,15 @@ router.get('/models', async (req, res) => {
   const client = await MongoClient.connect(mongoUrl, {
     useNewUrlParser: true
   })
-      const option1 = req.query.chosenModel
+      
       const db = client.db("database")
-
       //kolekciju sujungimas COLORS FUEL_TYPES MODELS YEARS ---> ADVERTS
+      const option1 = req.query.chosenModel
+
 
       const advertModels = await db.collection('adverts').aggregate([
 
-        { $match:
-          { 
-           $expr: {"modelID" : 1000008877}
-         }
-       },
+      { $match: { "modelID": option1 } },
         
         { $lookup:
            {
@@ -66,8 +63,11 @@ router.get('/models', async (req, res) => {
               foreignField: 'fuelID',
               as: 'advertFuelType'
              },
-           }
+           },
+           
         ]).toArray()
+
+        
 
          console.log(JSON.stringify(advertModels))
          res.json(advertModels)
@@ -77,6 +77,6 @@ router.get('/models', async (req, res) => {
 
     // const filteredData = await db.collection("adverts").findOne({ "modelID": option1})
     // res.json(filteredData)
-})
+ })
 
 module.exports = router

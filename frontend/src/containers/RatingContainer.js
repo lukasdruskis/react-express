@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import RatingComponent from '../components/RatingComponent'
+import RatingComponent from '../components/RatingComponent.jsx'
 import { ratePage, getResult } from '../actions/ratingActions'
 
 const mapStateToProps = ({rate}) => {

@@ -29,9 +29,7 @@ class App extends Component {
             <li>
               <Link to="/3"> Filtrų paieška </Link>
             </li>
-
             <div className="App">
-
           <Route exact path='/' component={FirstComponent}></Route>
           <Route exact path='/1' component={RatingContainer}></Route>
           <Route exact path='/2' component={SearchContainer}></Route>

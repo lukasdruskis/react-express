@@ -28,12 +28,14 @@ class FilterComponent extends Component {
         <div>
 
         Modelis: 
-        {fetchedAdverts && fetchedAdverts[0].advertModel[0].model}
+        {/* {fetchedAdverts && fetchedAdverts} */}
         
         <br></br>
 
         Spalva:
-        {fetchedAdverts && fetchedAdverts[0].advertColor[0].color}
+        {fetchedAdverts && fetchedAdverts.advertColor}
+        
+        
         </div>
 
       </div>
